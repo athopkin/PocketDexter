@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="pocketdexterv2.util"
+    android:versionCode="13"
+    android:versionName="1.52" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="22" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:screenOrientation="portrait"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="pocketdexterv2.MainMenu"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="pocketdexterv2.TypeChart"
+            android:label="@string/title_activity_type_chart"
+            android:parentActivityName="pocketdexterv2.MainMenu"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="pocketdexterv2.MainMenu" />
+        </activity>
+        <activity
+            android:name="pocketdexterv2.Attack"
+            android:label="@string/title_activity_attack"
+            android:parentActivityName="pocketdexterv2.TypeChart"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="pocketdexterv2.TypeChart" />
+        </activity>
+        <activity
+            android:name="pocketdexterv2.Defense"
+            android:label="@string/title_activity_defense"
+            android:parentActivityName="pocketdexterv2.TypeChart"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="pocketdexterv2.TypeChart" />
+        </activity>
+        <activity
+            android:name="pocketdexterv2.Search"
+            android:label="@string/title_activity_search"
+            android:parentActivityName="pocketdexterv2.MainMenu"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="pocketdexterv2.MainMenu" />
+        </activity>
+        <activity
+            android:name="pocketdexterv2.Generate"
+            android:label="@string/title_activity_generate"
+            android:parentActivityName="pocketdexterv2.MainMenu"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="pocketdexterv2.MainMenu" />
+        </activity>
+        <activity
+            android:name="pocketdexterv2.List"
+            android:label="@string/title_activity_list"
+            android:parentActivityName="pocketdexterv2.MainMenu"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="pocketdexterv2.MainMenu" />
+        </activity>
+        <activity
+            android:name="pocketdexterv2.TeamList"
+            android:label="@string/title_activity_team_list"
+            android:parentActivityName="pocketdexterv2.Generate"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="pocketdexterv2.Generate" />
+        </activity>
+        <activity
+            android:name="pocketdexterv2.Details"
+            android:label="@string/title_activity_details"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="pocketdexterv2.SearchList"
+            android:label="@string/title_activity_search_list"
+            android:parentActivityName="pocketdexterv2.Search"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="pocketdexterv2.Search" />
+        </activity>
+        <activity
+            android:name="pocketdexterv2.Details2"
+            android:label="@string/title_activity_details2"
+            android:parentActivityName="pocketdexterv2.Details"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="pocketdexterv2.Details" />
+        </activity>
+        <activity
+            android:name="pocketdexterv2.util.SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="pocketdexterv2.Quiz"
+            android:label="@string/title_activity_quiz"
+            android:parentActivityName="pocketdexterv2.MainMenu"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="pocketdexterv2.MainMenu" />
+        </activity>
+        <activity
+            android:name="pocketdexterv2.HighLow"
+            android:label="@string/title_activity_high_low"
+            android:parentActivityName="pocketdexterv2.Quiz"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="pocketdexterv2.Quiz" />
+        </activity>
+        <activity
+            android:name="pocketdexterv2.util.Legacy"
+            android:label="@string/title_activity_legacy"
+            android:parentActivityName="pocketdexterv2.Quiz"
+            android:screenOrientation="portrait" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="pocketdexterv2.Quiz" />
+        </activity>
+    </application>
+
+</manifest>

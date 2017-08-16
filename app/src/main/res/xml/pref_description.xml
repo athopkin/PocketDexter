@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+    
+     <CheckBoxPreference
+        android:defaultValue="true"
+        android:key="number_check"
+        android:title="@string/pref_title_number" />
+    
+     <CheckBoxPreference
+        android:defaultValue="true"
+        android:key="type_check"
+        android:title="@string/pref_title_type" />
+             
+     <CheckBoxPreference
+        android:defaultValue="true"
+        android:key="stats_check"
+        android:title="@string/pref_title_stats" />
+     
+     <CheckBoxPreference
+        android:defaultValue="true"
+        android:dependency="stats_check"
+        android:key="total_check"
+        android:title="@string/pref_title_total" />
+         
+     <CheckBoxPreference
+        android:defaultValue="false"
+        android:dependency="stats_check"
+        android:key="hp_check"
+        android:title="@string/pref_title_hp" />
+         
+     <CheckBoxPreference
+        android:defaultValue="false"
+        android:dependency="stats_check"
+        android:key="attack_check"
+        android:title="@string/pref_title_attack" />
+         
+     <CheckBoxPreference
+        android:defaultValue="false"
+        android:dependency="stats_check"
+        android:key="defense_check"
+        android:title="@string/pref_title_defense" />
+         
+     <CheckBoxPreference
+        android:defaultValue="false"
+        android:dependency="stats_check"
+        android:key="spatk_check"
+        android:title="@string/pref_title_spatk" />
+         
+     <CheckBoxPreference
+        android:defaultValue="false"
+        android:dependency="stats_check"
+        android:key="spdef_check"
+        android:title="@string/pref_title_spdef" />
+         
+     <CheckBoxPreference
+        android:defaultValue="false"
+        android:dependency="stats_check"
+        android:key="speed_check"
+        android:title="@string/pref_title_speed" />
+     
+</PreferenceScreen>

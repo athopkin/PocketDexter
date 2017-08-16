@@ -1,0 +1,88 @@
+<resources>
+
+    <string name="title_activity_settings">Settings</string>
+
+    <!-- General settings -->
+    <string name="pref_header_general">General</string>
+    <string name="pref_title_generations">Generation</string>
+    <string name="pref_title_sort">Sort By</string>
+    <string name="pref_title_descending">Sort Descending</string>
+    <string name="pref_description_descending">Reverses the order of the list</string>
+    <string name="pref_title_search_alts">Search Alternate Forms</string>
+    <string name="pref_description_search_alts">Retrieves alternate forms when searching (i.e. Megas)</string>
+    <string name="pref_title_background">Background Color</string>
+    
+	<string-array name="pref_gen_list">
+        <item>National</item>
+        <item>Red/Blue/Yellow</item>
+        <item>Gold/Silver/Crystal</item>
+        <item>Ruby/Sapphire/Emerald</item>
+        <item>Diamond/Pearl/Platinum</item>
+        <item>Black/White/Black2/White2</item>
+        <item>X/Y</item>
+        <item>Sun/Moon</item>
+    </string-array>
+    <string-array name="pref_gen_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+    </string-array>
+    
+    <string-array name="pref_sort_list">
+        <item>A-Z</item>
+        <item>Numerical</item>
+        <item>Highest Total Stats</item>
+        <item>Highest HP</item>
+        <item>Highest Attack</item>
+        <item>Highest Defense</item>
+        <item>Highest Sp. Atk</item>
+        <item>Highest Sp. Def</item>
+        <item>Highest Speed</item>
+        </string-array>
+    <string-array name="pref_sort_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+    </string-array>
+    
+    <string-array name="pref_back_list">
+        <item>Red</item>
+        <item>Blue</item>
+        <item>Green</item>
+        <item>Yellow</item>
+        <item>Gray</item>
+        </string-array>
+    <string-array name="pref_back_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+    
+	<!-- Description settings -->
+	<string name="pref_header_description">List Details</string>
+	
+    <string name="pref_title_number"><b>Display Number</b></string>
+    <string name="pref_title_type"><b>Display Types</b></string>
+    <string name="pref_title_stats"><b>Display Stats</b></string>
+    <string name="pref_title_total">"\t\t\t Total"</string>
+    <string name="pref_title_hp">"\t\t\t HP"</string>
+    <string name="pref_title_attack">"\t\t\t Attack"</string>
+    <string name="pref_title_defense">"\t\t\t Defense"</string>
+    <string name="pref_title_spatk">"\t\t\t Sp. Atk"</string>
+    <string name="pref_title_spdef">"\t\t\t Sp. Def"</string>
+    <string name="pref_title_speed">"\t\t\t Speed"</string>
+
+</resources>

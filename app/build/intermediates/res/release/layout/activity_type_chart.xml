@@ -1,0 +1,79 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/typechart"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/pd_back"
+    tools:context=".TypeChart" >
+
+    <Button
+        android:id="@+id/button1"
+    	android:background="@android:drawable/btn_default"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/type1"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/type1"
+        android:paddingLeft="18dp"
+        android:paddingRight="19dp"
+        android:onClick="attack"
+        android:text="Attack" />
+
+    <Spinner
+        android:id="@+id/type3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/type2"
+        android:layout_toLeftOf="@+id/button2"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown" />
+
+    <Button
+    	android:background="@android:drawable/btn_default"
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/type3"
+        android:layout_alignRight="@+id/button1"
+        android:layout_alignTop="@+id/type2"
+        android:onClick="defend"
+        android:text="Defense" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="Select Types"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="25sp"
+        android:textStyle="bold|italic" />
+
+    <Spinner
+        android:id="@+id/type1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView1"
+        android:layout_marginTop="17dp"
+        android:layout_toLeftOf="@+id/button1"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown" />
+
+    <Spinner
+        android:id="@+id/type2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/type3"
+        android:layout_below="@+id/type1"
+        android:layout_marginTop="23dp"
+        android:layout_toLeftOf="@+id/button2"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown" />
+    
+</RelativeLayout>
+<!-- From: file:/C:/Users/ahopk_000/StudioProjects/PocketDexterV2/app/src/main/res/layout/activity_type_chart.xml -->

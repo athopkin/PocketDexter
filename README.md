@@ -1,0 +1,1 @@
+This mobile application is an encyclopedia and game assistant for the Pokemon franchise.

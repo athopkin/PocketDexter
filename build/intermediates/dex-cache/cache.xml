@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\Users\ahopk_000\StudioProjects\PocketDexterV2\app\build\intermediates\exploded-aar\com.android.support\gridlayout-v7\22.2.1\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="1e47268e271ff279aca3dfdd62587b8c90b6da14">
+        <dex dex="C:\Users\ahopk_000\StudioProjects\PocketDexterV2\app\build\intermediates\pre-dexed\release\classes-1c5a0f4104e383456aacdaf59293ecfc34aa34e7.jar" />
+    </item>
+    <item
+        jar="C:\Users\ahopk_000\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\22.2.1\support-annotations-22.2.1.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="61a0ff5c29295ec56d7e0bd3d25d95dbf71b4b2b">
+        <dex dex="C:\Users\ahopk_000\StudioProjects\PocketDexterV2\app\build\intermediates\pre-dexed\release\support-annotations-22.2.1-054b8e5218ef9a97f206529c82555523e4cde447.jar" />
+    </item>
+    <item
+        jar="C:\Users\ahopk_000\StudioProjects\PocketDexterV2\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="f8efd0096475e0daf054267b61544e10dc776503">
+        <dex dex="C:\Users\ahopk_000\StudioProjects\PocketDexterV2\app\build\intermediates\pre-dexed\release\classes-29138f141bfa41b5491f232f79c8617e7cead721.jar" />
+    </item>
+    <item
+        jar="C:\Users\ahopk_000\StudioProjects\PocketDexterV2\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\jars\libs\internal_impl-22.2.1.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="c471eaaba13ff64f6e0383d1c30a9cdc9a97efeb">
+        <dex dex="C:\Users\ahopk_000\StudioProjects\PocketDexterV2\app\build\intermediates\pre-dexed\release\internal_impl-22.2.1-5d232080f76a7a02933688a654caf35e90394f84.jar" />
+    </item>
+    <item
+        jar="C:\Users\ahopk_000\StudioProjects\PocketDexterV2\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.1\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="4486e953d1f35f8ccab098b1dd67146366d5f731">
+        <dex dex="C:\Users\ahopk_000\StudioProjects\PocketDexterV2\app\build\intermediates\pre-dexed\release\classes-8c6dd9d738366a7f4861d967ca698ed140defaa6.jar" />
+    </item>
+
+</items>
