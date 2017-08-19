@@ -21,6 +21,11 @@ import android.content.SharedPreferences;
 import android.os.Build;
 import android.preference.PreferenceManager;
 
+/*
+ * This is where the user selects the criteria for a search. Criteria include a textbox for a name
+ * or number and drop down selectors for one or two types. Searching with the textbox will override
+ * any type selections as to avoid certain conflicts between the criteria.
+ */
 public class Search extends Activity {
 
     public final static String EXTRA_MESSAGE = "pocketdexter.MESSAGE";
@@ -45,6 +50,7 @@ public class Search extends Activity {
 		final EditText textbox = (EditText)findViewById(R.id.editText1);
 		textbox.addTextChangedListener(new TextWatcher() {
 
+			//The dropdowns are disabled when there is text in the textbox.
 			public void afterTextChanged(Editable s) {
 				if(textbox.getText().toString().trim().length() != 0) {
 					dropdown2.setEnabled(false);
@@ -98,6 +104,7 @@ public class Search extends Activity {
 		return super.onOptionsItemSelected(item);
 	}
 
+	//Sets the color of the background based on the user's settings. Default is red.
 	private void assignBackground() {
 		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
 		RelativeLayout layout = (RelativeLayout) findViewById(R.id.search);
@@ -116,6 +123,7 @@ public class Search extends Activity {
 		}
 	}
 
+	//This method collects the criteria input and puts it as a message to send to SearchList.java.
 	public void search(View view) {
 		Intent intent = new Intent(this, SearchList.class);
 		EditText edittext = (EditText) findViewById(R.id.editText1);

@@ -28,6 +28,9 @@ import android.content.SharedPreferences;
 import android.os.Build;
 import android.preference.PreferenceManager;
 
+/*
+ * Randomly generates a team of Pokemon based on user criteria and displays it to the user.
+ */
 public class TeamList extends Activity implements OnItemClickListener, SwipeRefreshLayout.OnRefreshListener {
 
 	private static ArrayList<Pokemon> master = new ArrayList<Pokemon>();
@@ -131,12 +134,14 @@ public class TeamList extends Activity implements OnItemClickListener, SwipeRefr
         listView.setOnItemClickListener(this);
 	}
 
+	//A Pokemon in the list can be clicked on and it will display its details in Details.java.
 	public void onItemClick(AdapterView<?> l, View v, int position, long id) {
 		Intent intent = new Intent(this, Details.class);
         intent.putExtra("mon", team.get(position));	
 		startActivity(intent);
 	}
 
+	//Generates a new team when refreshed based on the same criteria.
 	@Override
 	public void onRefresh() {
 		new Handler().postDelayed(new Runnable() {
@@ -223,6 +228,7 @@ public class TeamList extends Activity implements OnItemClickListener, SwipeRefr
 		return super.onOptionsItemSelected(item);
 	}
 
+	//Sets the color of the background based on the user's settings. Default is red.
 	private void assignBackground() {
 		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
 		SwipeRefreshLayout layout = (SwipeRefreshLayout) findViewById(R.id.teamlist);
@@ -241,12 +247,15 @@ public class TeamList extends Activity implements OnItemClickListener, SwipeRefr
 		}
 	}
 
+	//Generates a team of Pokemon based on user criteria. Returns the team as an ArrayList of Strings.
 	@SuppressWarnings("unchecked")
 	private ArrayList<String> generate(ArrayList<Pokemon> array, String stuff, SharedPreferences prefs) {
 		Random rand = new Random();
 		selection = (ArrayList<Pokemon>) array.clone();
 		team = new ArrayList<Pokemon>();
 
+		//If a Pokemon does not meet the criteria, it is removed from the selection pool.
+		//Checks if the Pokemon can evolve
 		if(stuff.contains("evolved")) {
 			for(int i=0; i<selection.size(); i++) {
 				if(selection.get(i).getEvo() != null) {
@@ -255,6 +264,7 @@ public class TeamList extends Activity implements OnItemClickListener, SwipeRefr
 				}
 			}
 		}
+		//Checks if the Pokemon has two types
 		if(stuff.contains("twotype")) {
 			for(int i=0; i<selection.size(); i++) {
 				if(selection.get(i).getType2() == null) {
@@ -263,6 +273,7 @@ public class TeamList extends Activity implements OnItemClickListener, SwipeRefr
 				}
 			}
 		}
+		//Checks if the Pokemon is a legendary
 		if(stuff.contains("nolegend")) {
 			for(int i=0; i<selection.size(); i++) {
 				if(selection.get(i).getLegend()) {
@@ -271,7 +282,8 @@ public class TeamList extends Activity implements OnItemClickListener, SwipeRefr
 				}
 			}
 		}
-		
+
+		//Generates a Pokemon team so that no Pokemon will share the same type
 		if(stuff.contains("vary")) {
 			ArrayList<String> types = new ArrayList<String>();
 			while(team.size() < 6 && selection.size() != 0) {
@@ -295,6 +307,7 @@ public class TeamList extends Activity implements OnItemClickListener, SwipeRefr
 				}
 				selection.remove(num);
 			}
+		//Generates a team so that it has super effective coverage for all types
 		} else if(stuff.contains("advantage")) {
 			ArrayList<String> types = new ArrayList<String>();
 			while(team.size() < 6 && selection.size() != 0) {
@@ -320,17 +333,18 @@ public class TeamList extends Activity implements OnItemClickListener, SwipeRefr
 						}
 					}
 				}
-				
 
 				if(pick && !team.contains(poke)) {
 					team.add(poke);
 				}
 				selection.remove(num);
 			}
-			
+
+			//All 18 types must be covered or the team is reset.
 			if(types.size() != 18) {
 		        team = new ArrayList<Pokemon>();
 			}
+		//Generates a team completely at random
 		} else if(stuff.contains("random")){
 			while(team.size() < 6 && selection.size() > 0) {
 				Pokemon poke = selection.get(rand.nextInt(selection.size()));
@@ -338,6 +352,7 @@ public class TeamList extends Activity implements OnItemClickListener, SwipeRefr
 					team.add(poke);
 				}
 			}
+		//Generates a team completely at random as a default
 		} else {
 			while(team.size() < 6 && selection.size() > 0) {
 				Pokemon poke = selection.get(rand.nextInt(selection.size()));
@@ -370,7 +385,7 @@ public class TeamList extends Activity implements OnItemClickListener, SwipeRefr
 				}
 			}
 		} else {
-			//RECURSIVE CALL
+			//RECURSIVE CALL - for when conditions do not produce a full team of six
 			try {
 				names = generate(array, stuff, prefs);
 			} catch(StackOverflowError e) {
@@ -380,6 +395,7 @@ public class TeamList extends Activity implements OnItemClickListener, SwipeRefr
 		return names;
 	}
 
+	//Calls the generate() method 100 times to compare stat totals based on user criteria
 	private ArrayList<String> generateStats(ArrayList<Pokemon> array, String stuff, SharedPreferences prefs) {
 		ArrayList<String> names = new ArrayList<String>();
 		ArrayList<Pokemon> highTeam = new ArrayList<Pokemon>();
@@ -391,8 +407,7 @@ public class TeamList extends Activity implements OnItemClickListener, SwipeRefr
 			highTeam = team;
 			highStat = teamStat;
 		}
-//		System.out.println(teamStat+" "+highStat);
-		
+
 		for(int i=0; i<100; i++) {
 			teamStat = 0;
 			generate(master, stuff, prefs);
@@ -403,7 +418,6 @@ public class TeamList extends Activity implements OnItemClickListener, SwipeRefr
 				highTeam = team;
 				highStat = teamStat;
 			} 
-//			System.out.println(teamStat+" "+highStat);
 		}
 		
 		if(highTeam.size() == 6) {
@@ -417,7 +431,8 @@ public class TeamList extends Activity implements OnItemClickListener, SwipeRefr
 		team = highTeam;
 		return names;
 	}
-	
+
+	//This method turns a Pokemon object into a String formatted for the search results.
 	private static String formatEntry(SharedPreferences prefs, Pokemon p) {
 		String entry = "";
 		String tab = "\t\t\t";
@@ -458,6 +473,7 @@ public class TeamList extends Activity implements OnItemClickListener, SwipeRefr
 		return entry;
 	}
 
+	//This method sorts a Pokemon ArrayList(list) by the user preferences(prefs) in the options.
 	private void sortList(ArrayList<Pokemon> list, SharedPreferences prefs) {
 		String sort = prefs.getString("sort_list", "none");
 		boolean descend = prefs.getBoolean("descending_checkbox", false);
@@ -636,6 +652,7 @@ public class TeamList extends Activity implements OnItemClickListener, SwipeRefr
 		}
 	}
 
+	//List of 1st generation Pokemon
 	private static void RBY() {
 		master.add(new Pokemon(1, "Bulbasaur", "Grass", "Poison", "Level 16", 318, 45, 49, 49, 65, 65, 45, false, false));
 		master.add(new Pokemon(2, "Ivysaur", "Grass", "Poison", "Level 32", 405, 60, 62, 63, 80, 80, 60, false, false));
@@ -824,7 +841,8 @@ public class TeamList extends Activity implements OnItemClickListener, SwipeRefr
 		master.get(102).addForm(new Pokemon(103, "Exeggutor (Alola)", "Grass", "Dragon", 530, 95, 105, 85, 125, 75, 45, false, false));
 		master.get(104).addForm(new Pokemon(105, "Marowak (Alola)", "Fire", "Ghost", 425, 60, 80, 110, 50, 80, 45, false, false));
 	}
-	
+
+	//List of 2nd generation Pokemon
 	private static void GSC() {
 		master.add(new Pokemon(152, "Chikorita", "Grass", null, "Level 16", 318, 45, 49, 65, 49, 65, 45, false, false));
 		master.add(new Pokemon(153, "Bayleef", "Grass", null, "Level 32", 405, 60, 62, 80, 63, 80, 60, false, false));
@@ -934,6 +952,7 @@ public class TeamList extends Activity implements OnItemClickListener, SwipeRefr
 		master.add(new Pokemon(251, "Celebi", "Psychic", "Grass", 600, 100, 100, 100, 100, 100, 100, true, false));
 	}
 
+	//List of 3rd generation Pokemon
 	private static void RSE() {
 		master.add(new Pokemon(252, "Treecko", "Grass", null, "Level 16", 310, 40, 45, 35, 65, 55, 70, false, false));
 		master.add(new Pokemon(253, "Grovyle", "Grass", null, "Level 36", 405, 50, 65, 45, 85, 65, 95, false, false));
@@ -1097,7 +1116,8 @@ public class TeamList extends Activity implements OnItemClickListener, SwipeRefr
 		master.get(master.size()-1).addForm(new Pokemon(386, "Deoxys (Speed)", "Psychic", null, 600, 50, 95, 90, 95, 90, 180, true, false));
 
 	}
-	
+
+	//List of 4th generation Pokemon
 	private static void DPP() {
 		master.add(new Pokemon(387, "Turtwig", "Grass", null, "Level 18", 318, 55, 68, 64, 45, 55, 31, false, false));
 		master.add(new Pokemon(388, "Grotle", "Grass", null, "Level 32", 405, 75, 89, 85, 55, 65, 36, false, false));
@@ -1221,7 +1241,8 @@ public class TeamList extends Activity implements OnItemClickListener, SwipeRefr
 		master.get(master.size()-1).addForm(new Pokemon(492, "Shaymin (Sky)", "Grass", "Flying", 600, 100, 103, 75, 120, 75, 127, true, false));
 		master.add(new Pokemon(493, "Arceus", "Normal", null, 720, 120, 120, 120, 120, 120, 120, true, false));
 	}
-	
+
+	//List of 5th generation Pokemon
 	private static void BW() {
 		master.add(new Pokemon(494, "Victini", "Psychic", "Fire", 600, 100, 100, 100, 100, 100, 100, true, false));
 		master.add(new Pokemon(495, "Snivy", "Grass", null, "Level 17", 308, 45, 45, 55, 45, 55, 63, false, false));
@@ -1391,6 +1412,7 @@ public class TeamList extends Activity implements OnItemClickListener, SwipeRefr
 
 	}
 
+	//List of 6th generation Pokemon
 	private static void XYZ() {
 		master.add(new Pokemon(650, "Chespin", "Grass", null, "Level 16", 313, 56, 61, 65, 48, 45, 38, false, false));
 		master.add(new Pokemon(651, "Quilladin", "Grass", null, "Level 36", 405, 61, 78, 95, 56, 58, 57, false, false));
@@ -1477,6 +1499,7 @@ public class TeamList extends Activity implements OnItemClickListener, SwipeRefr
 		master.add(new Pokemon(721, "Volcanion", "Fire", "Water", 600, 80, 110, 120, 130, 90, 70, true, false));
 	}
 
+	//List of 7th generation Pokemon
 	private static void SMS() {
 		master.add(new Pokemon(722, "Rowlet", "Grass", "Flying", "Level 17", 320, 68, 55, 55, 50, 50, 42, false, false));
 		master.add(new Pokemon(723, "Dartrix", "Grass", "Flying", "Level 34", 420, 78, 75, 75, 70, 70, 52, false, false));
@@ -1567,6 +1590,7 @@ public class TeamList extends Activity implements OnItemClickListener, SwipeRefr
 		master.add(new Pokemon(802, "Marshadow", "Fighting", "Ghost", 600, 90, 125, 80, 90, 90, 125, true, false));
 	}
 
+	//List of all Pokemon
 	private static void national() {
 		RBY();
 		GSC();
@@ -1577,6 +1601,7 @@ public class TeamList extends Activity implements OnItemClickListener, SwipeRefr
 		SMS();
 	}
 
+	//A type chart that compares type effectiveness against other types
 	private static final String[][] typeChart = {
 		{null,		"Normal","Fighting","Flying","Poison","Ground","Rock","Bug","Ghost","Steel","Fire","Water","Grass","Electric","Psychic","Ice","Dragon","Dark","Fairy"},
 		{"Normal",	"1",	"1",	"1",	"1",	"1",	".5",	"1",	"0",	".5",	"1",	"1",	"1",	"1",	"1",	"1",	"1",	"1",	"1"},

@@ -12,6 +12,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
 
+/*
+ * This is the main menu of the application and is the first screen that the user sees.
+ * There are navigation buttons that will take the user to different areas of functionality.
+ * Settings can be accessed from the top-right corner of the screen, which is locked in
+ * portrait orientation.
+ */
 public class MainMenu extends Activity {
 
     public final static String EXTRA_MESSAGE = "com.example.pocketdexter.MESSAGE";
@@ -47,6 +53,7 @@ public class MainMenu extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
+	//Sets the color of the background based on the user's settings. Default is red.
 	private void assignBackground() {
 		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
 		RelativeLayout layout = (RelativeLayout) findViewById(R.id.mainmenu);
@@ -64,27 +71,37 @@ public class MainMenu extends Activity {
 			layout.setBackgroundResource(R.drawable.pd_back2);
 		}
 	}
-	
+
+	//To search for a Pokemon or a list of Pokemon, press the "Search" button.
+	// This method is called when the "Search" button is pressed and it opens Search.java.
 	public void search(View view) {
 		Intent intent = new Intent(this, Search.class);
 	    startActivity(intent);
 	}
-	
+
+	//To automatically generate a team of Pokemon, press the "Generate" button.
+	// This method is called when the "Generate" button is pressed and it opens Generate.java.
 	public void generate(View view) {
 		Intent intent = new Intent(this, Generate.class);
 	    startActivity(intent);
 	}
-	
+
+	//To retrieve the list of Pokemon for the current Pokedex, press the "Pokedex List" button.
+	// This method is called when the "Pokedex List" button is pressed and it opens List.java.
 	public void list(View view) {
 		Intent intent = new Intent(this, List.class);
 	    startActivity(intent);
 	}
-	
+
+	//To check a type's effectiveness against other types, press the "Type Chart" button.
+	// This method is called when the "Type Chart" button is pressed and it opens TypeChart.java.
 	public void type(View view) {
 		Intent intent = new Intent(this, TypeChart.class);
 	    startActivity(intent);
 	}
 
+	//To play a game based on Pokemon knowledge, press the "Test Your Knowledge" button.
+	// This method is called when the "Test Your Knowledge" button is pressed and it opens Quiz.java.
 	public void quiz(View view) {
 		Intent intent = new Intent(this, Quiz.class);
 		startActivity(intent);

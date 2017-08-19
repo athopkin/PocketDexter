@@ -26,6 +26,9 @@ import android.content.SharedPreferences;
 import android.os.Build;
 import android.preference.PreferenceManager;
 
+/*
+ * This is where the current Pokedex is displayed to the user.
+ */
 public class List extends Activity implements OnItemClickListener {
 
 	private static ArrayList<Pokemon> master = new ArrayList<Pokemon>();
@@ -49,6 +52,7 @@ public class List extends Activity implements OnItemClickListener {
 		applySort();
 	}
 
+	//A Pokemon in the list can be clicked on and it will display its details in Details.java.
 	public void onItemClick(AdapterView<?> l, View v, int position, long id) {
 		Intent intent = new Intent(this, Details.class);
         intent.putExtra("mon", master.get(position));
@@ -85,7 +89,8 @@ public class List extends Activity implements OnItemClickListener {
         }
 		return super.onOptionsItemSelected(item);
 	}
-	
+
+	//This method turns a Pokemon object into a String formatted for the Pokedex list.
 	private static String formatEntry(SharedPreferences prefs, Pokemon p) {
 		String entry = "";
 		String tab = "\t\t\t";
@@ -125,7 +130,8 @@ public class List extends Activity implements OnItemClickListener {
 		
 		return entry;
 	}
-	
+
+	//Sets the color of the background based on the user's settings. Default is red.
 	private void assignBackground() {
 		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
 		RelativeLayout layout = (RelativeLayout) findViewById(R.id.list);
@@ -144,6 +150,7 @@ public class List extends Activity implements OnItemClickListener {
 		}
 	}
 
+	//This method sets the Pokedex from the options and sorts it by the user preferences.
 	private void applySort() {
 		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
 		String gen = prefs.getString("gen_list", "none");
@@ -350,6 +357,7 @@ public class List extends Activity implements OnItemClickListener {
 		}
 	}
 
+	//List of 1st generation Pokemon
 	private static void RBY() {
 		master.add(new Pokemon(1, "Bulbasaur", "Grass", "Poison", "Level 16", 318, 45, 49, 49, 65, 65, 45, false, false));
 		master.add(new Pokemon(2, "Ivysaur", "Grass", "Poison", "Level 32", 405, 60, 62, 63, 80, 80, 60, false, false));
@@ -538,7 +546,8 @@ public class List extends Activity implements OnItemClickListener {
 		master.get(102).addForm(new Pokemon(103, "Exeggutor (Alola)", "Grass", "Dragon", 530, 95, 105, 85, 125, 75, 45, false, false));
 		master.get(104).addForm(new Pokemon(105, "Marowak (Alola)", "Fire", "Ghost", 425, 60, 80, 110, 50, 80, 45, false, false));
 	}
-	
+
+	//List of 2nd generation Pokemon
 	private static void GSC() {
 		master.add(new Pokemon(152, "Chikorita", "Grass", null, "Level 16", 318, 45, 49, 65, 49, 65, 45, false, false));
 		master.add(new Pokemon(153, "Bayleef", "Grass", null, "Level 32", 405, 60, 62, 80, 63, 80, 60, false, false));
@@ -648,6 +657,7 @@ public class List extends Activity implements OnItemClickListener {
 		master.add(new Pokemon(251, "Celebi", "Psychic", "Grass", 600, 100, 100, 100, 100, 100, 100, true, false));
 	}
 
+	//List of 3rd generation Pokemon
 	private static void RSE() {
 		master.add(new Pokemon(252, "Treecko", "Grass", null, "Level 16", 310, 40, 45, 35, 65, 55, 70, false, false));
 		master.add(new Pokemon(253, "Grovyle", "Grass", null, "Level 36", 405, 50, 65, 45, 85, 65, 95, false, false));
@@ -811,7 +821,8 @@ public class List extends Activity implements OnItemClickListener {
 		master.get(master.size()-1).addForm(new Pokemon(386, "Deoxys (Speed)", "Psychic", null, 600, 50, 95, 90, 95, 90, 180, true, false));
 
 	}
-	
+
+	//List of 4th generation Pokemon
 	private static void DPP() {
 		master.add(new Pokemon(387, "Turtwig", "Grass", null, "Level 18", 318, 55, 68, 64, 45, 55, 31, false, false));
 		master.add(new Pokemon(388, "Grotle", "Grass", null, "Level 32", 405, 75, 89, 85, 55, 65, 36, false, false));
@@ -935,7 +946,8 @@ public class List extends Activity implements OnItemClickListener {
 		master.get(master.size()-1).addForm(new Pokemon(492, "Shaymin (Sky)", "Grass", "Flying", 600, 100, 103, 75, 120, 75, 127, true, false));
 		master.add(new Pokemon(493, "Arceus", "Normal", null, 720, 120, 120, 120, 120, 120, 120, true, false));
 	}
-	
+
+	//List of 5th generation Pokemon
 	private static void BW() {
 		master.add(new Pokemon(494, "Victini", "Psychic", "Fire", 600, 100, 100, 100, 100, 100, 100, true, false));
 		master.add(new Pokemon(495, "Snivy", "Grass", null, "Level 17", 308, 45, 45, 55, 45, 55, 63, false, false));
@@ -1105,6 +1117,7 @@ public class List extends Activity implements OnItemClickListener {
 
 	}
 
+	//List of 6th generation Pokemon
 	private static void XYZ() {
 		master.add(new Pokemon(650, "Chespin", "Grass", null, "Level 16", 313, 56, 61, 65, 48, 45, 38, false, false));
 		master.add(new Pokemon(651, "Quilladin", "Grass", null, "Level 36", 405, 61, 78, 95, 56, 58, 57, false, false));
@@ -1191,6 +1204,7 @@ public class List extends Activity implements OnItemClickListener {
 		master.add(new Pokemon(721, "Volcanion", "Fire", "Water", 600, 80, 110, 120, 130, 90, 70, true, false));
 	}
 
+	//List of 7th generation Pokemon
 	private static void SMS() {
 		master.add(new Pokemon(722, "Rowlet", "Grass", "Flying", "Level 17", 320, 68, 55, 55, 50, 50, 42, false, false));
 		master.add(new Pokemon(723, "Dartrix", "Grass", "Flying", "Level 34", 420, 78, 75, 75, 70, 70, 52, false, false));
@@ -1281,6 +1295,7 @@ public class List extends Activity implements OnItemClickListener {
 		master.add(new Pokemon(802, "Marshadow", "Fighting", "Ghost", 600, 90, 125, 80, 90, 90, 125, true, false));
 	}
 
+	//List of all Pokemon
 	private static void national() {
 		RBY();
 		GSC();

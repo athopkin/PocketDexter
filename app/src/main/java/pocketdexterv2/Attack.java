@@ -19,6 +19,9 @@ import android.os.Build;
 import android.preference.PreferenceManager;
 import android.widget.TextView;
 
+/*
+ *
+ */
 public class Attack extends Activity {
 
 	private static ArrayList<String> show = new ArrayList<String>();
